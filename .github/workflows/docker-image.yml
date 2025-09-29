@@ -15,14 +15,7 @@ jobs:
 
       - name: Login no GHCR
         run: echo ${{ secrets.GHCR_SECRET }} | docker login ghcr.io -u SEU_USUARIO --password-stdin
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
+        
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
